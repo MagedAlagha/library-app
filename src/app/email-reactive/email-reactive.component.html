@@ -1,0 +1,15 @@
+<p>newsletter works!</p>
+<form [formGroup]="emailFrm" (ngSubmit)="onSubmitForm()" novalidate>
+  <input class=" d-block" type="text" formControlName="fullName">
+  <small class="mb-3 text-danger d-block" *ngIf="!name?.valid && (name?.dirty)||name?.touched">
+    <div *ngIf="name?.errors?.['required']">Name is required</div>
+    <div *ngIf="name?.errors?.['pattern']">Enter is avlid name</div>
+  </small>
+  <input class="mt-2" type="text" formControlName="email">
+  <small class="text-danger d-block" *ngIf="!email?.valid && (email?.dirty)||email?.touched">
+    <div *ngIf="email?.errors?.['required']">Email is required</div>
+    <!--     <div *ngIf="email.errors?.['email']">Enter is avlid email address</div>  -->
+    <div *ngIf="email?.errors?.['pattern']">Enter is avlid email address</div>
+  </small>
+  <button [disabled]="!emailFrm.valid" type="submit">Submit</button>
+</form>
